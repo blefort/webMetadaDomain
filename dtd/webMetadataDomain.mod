@@ -72,7 +72,7 @@
               %localization-atts;
               async CDATA #FIXED 'async'
               charset CDATA #IMPLIED
-              async CDATA #FIXED 'defer'
+              defer CDATA #FIXED 'defer'
               type (text-javascript | text-ecmascript | application-ecmascript |  application-javascript | text-vbscript | CDATA) #IMPLIED
               "
               >
