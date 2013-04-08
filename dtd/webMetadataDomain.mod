@@ -20,8 +20,8 @@
 <!ENTITY % webmeta "webmeta" >
 
 <!-- data elements -->
-<!ENTITY % css "css" >
-<!ENTITY % javascript "javascript" >
+<!ENTITY % style "style" >
+<!ENTITY % script "script" >
 
 <!-- ============================================================= -->
 <!--                    COMMON ATTLIST SETS                        -->
@@ -35,7 +35,7 @@
 
 
 
-<!--                    LONG NAME: pub Metadata                   -->
+<!--                    LONG NAME: web Metadata                   -->
 <!ENTITY % webmeta.content
  "((%linktext;)?, 
    (%searchtitle;)?, 
@@ -50,8 +50,8 @@
    (%keywords;)*, 
    (%prodinfo;)*, 
    (%othermeta;)*, 
-   (%css;)*, 
-   (%javascript;)*, 
+   (%style;)*, 
+   (%script;)*, 
    (%data;)*)"
 >
 <!ENTITY % webmeta.attributes
@@ -65,25 +65,29 @@
 <!ELEMENT webmeta    %webmeta.content;>
 <!ATTLIST webmeta    %webmeta.attributes;>
 
-
-<!-- css and javascript elements -->
-<!ENTITY % assets.content "(#PCDATA)*"
->
-<!ENTITY % assets.attributes
+<!-- style and script elements -->
+<!ENTITY % script.content "(#PCDATA)*">
+<!ENTITY % script.attributes
              "%id-atts;
               %localization-atts;
-              base 
-                        CDATA 
-                                  #IMPLIED
-              %base-attribute-extensions;
-              outputclass
-                        CDATA 
-                                  #IMPLIED"
+              async CDATA #FIXED 'async'
+              charset CDATA #IMPLIED
+              async CDATA #FIXED 'defer'
+              type (text-javascript | text-ecmascript | application-ecmascript |  application-javascript | text-vbscript | CDATA) #IMPLIED
+              "
+              >
+
+<!ENTITY % style.content "(#PCDATA)*">
+
+<!ENTITY % style.attributes
+             "%id-atts;
+              %localization-atts;"
 >
-<!ELEMENT css    %assets.content;>
-<!ATTLIST css    %assets.attributes;>
-<!ELEMENT javascript    %assets.content;>
-<!ATTLIST javascript    %assets.attributes;>
+<!ELEMENT style %style.content;>
+<!ATTLIST style %style.attributes;>
+
+<!ELEMENT script %script.content;>
+<!ATTLIST script %script.attributes;>
  
 <!-- ============================================================= -->
 <!--                    SPECIALIZATION ATTRIBUTE DECLARATIONS      -->
@@ -93,6 +97,6 @@
 <!-- topicmeta types: -->
 
 <!ATTLIST webmeta      %global-atts; class CDATA "+ map/topicmeta webmeta-d/webmeta ">
-<!ATTLIST css          %global-atts; class CDATA "+ topic/data webmap/css ">
-<!ATTLIST javascript          %global-atts; class CDATA "+ topic/data webmap/javascript ">
+<!ATTLIST style        %global-atts; class CDATA "+ topic/data webmap/style ">
+<!ATTLIST script       %global-atts; class CDATA "+ topic/data webmap/script ">
 <!-- ================== End pub map domain ============================= -->
